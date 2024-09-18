@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Background remains black */
+    z-index: 1000; /* Ensure burger menu stays on top */
+}
+
+.burger-menu {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.burger-menu .line {
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Cards Container: Hidden by Default */
+.cards-container.hidden {
+    display: none;
+}
+
+/* Cards Stacked like Uno Cards */
+.cards-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    z-index: 1;
+    padding: 10px;
+}
+
+/* Stacked with slight rotation, like Uno Cards */
+.card.toolkit {
+    background-color: #ffcc00; /* Yellow */
+    transform: rotate(-15deg);
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.card.projects {
+    background-color: #001f3f; /* Navy blue */
+    transform: rotate(-5deg);
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.card.experience {
+    background-color: #4CAF50; /* Green */
+    transform: rotate(5deg);
+    top: 40px;
+    left: 40px;
+    z-index: 1;
+}
+
+/* Labels (Like Navbar Links) Positioned on Top Left Corner */
+.label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    color: white;
+}
+
+/* Active Card (When Clicked) Expands */
+.card.active {
+    width: 90vw;
+    height: 90vh;
+    z-index: 100; /* Bring to front */
+    transform: rotate(0deg) !important; /* No rotation */
+    top: 5%;
+    left: 5%;
+}
+
+/* Hide Other Cards When One is Clicked */
+.card.hide {
+    display: none;
+}

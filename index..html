@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Style Navbar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh;
+            margin: 0;
+            background-color: #424242; /* Dark Gray background */
+        }
+
+        .navbar {
+            position: relative;
+            width: 150px;
+            height: 67vh; /* Adjust height for a more reasonable navbar height */
+            margin: 0; /* Ensure no extra margins */
+            padding: 0; /* Ensure no padding */
+            left: 60px; /* Move the navbar slightly to the right */
+        }
+
+        .nav-item {
+            position: absolute;
+            width: 260px;
+            height: 360px;
+            background-color: #F5F5F5; /* Light Gray card color */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            color: #297799; /* Teal Blue text for contrast */
+            border: 3px solid #8CFCB2; /* Pale Green border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Remove the background from the label */
+        .nav-item .label {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 18px;
+            color: #297799; /* Teal Blue text for readability */
+            padding: 5px;
+        }
+
+        /* Hover effect for text zoom and background color change */
+        .nav-item:hover {
+            background-color: #297799;
+        }
+
+        .nav-item:hover a  {
+            transform: scale(1.2); /* Zoom effect for text */
+            color: white; /* Light Gray text on hover */
+        }
+        .nav-item:hover .label  {
+            transform: scale(1.2); /* Zoom effect for text */
+            color: white; /* Light Gray text on hover */
+        }
+
+        /* Style for the anchor tag inside the cards */
+        .nav-item a {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* Positioning and color adjustments for alternating cards */
+        .card-1 {
+            z-index: 5;
+            bottom: -50px;
+            left: 20px;
+            background-color: #8CFCB2; /* Pale Green */
+            border-color: #297799;
+            transform: rotate(40deg);
+        }
+
+        .card-2 {
+            z-index: 4;
+            bottom: 40px;
+            left: -30px;
+            background-color: #F5F5F5; /* Light Gray */
+            border-color: #297799;
+            transform: rotate(10deg);
+        }
+
+        .card-3 {
+            z-index: 3;
+            bottom: 97px;
+            left: -160px;
+            background-color: #8CFCB2; /* Pale Green */
+            border-color: #297799;
+            transform: rotate(-30deg);
+        }
+
+        .card-4 {
+            z-index: 2;
+            bottom: 100px;
+            left: -240px;
+            background-color: #F5F5F5; /* Light Gray */
+            border-color: #297799;
+            transform: rotate(-50deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="nav-item card-1">
+            <div class="label">Home</div>
+            <a href="#">1</a>
+        </div>
+        <div class="nav-item card-2">
+            <div class="label">About</div>
+            <a href="#">2</a>
+        </div>
+        <div class="nav-item card-3">
+            <div class="label">Services</div>
+            <a href="#">3</a>
+        </div>
+        <div class="nav-item card-4">
+            <div class="label">Contact</div>
+            <a href="#">4</a>
+        </div>
+    </div>
+
+</body>
+</html>
