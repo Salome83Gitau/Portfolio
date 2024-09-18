@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Web Designer & Software Security Analyst</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">YourLogo</div>
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#toolkit">Toolkit</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="full-page-section">
+        <div class="content">
+            <h1 id="scrambleText">Welcome to My Portfolio</h1>
+            <p>I design professional websites and secure systems that enhance user experiences and protect valuable data.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="full-page-section">
+        <h2>Projects</h2>
+        <div class="carousel-section">
+            <div class="project-list">
+                <div class="project-item" data-project="1">E-commerce Website</div>
+                <div class="project-item" data-project="2">Cybersecurity Tool</div>
+                <div class="project-item" data-project="3">Portfolio with Animations</div>
+            </div>
+            <div class="project-display">
+                <div class="carousel-item active">
+                    <img src="project1.jpg" alt="E-commerce Website">
+                    <p>Project 1: An advanced e-commerce platform with custom admin panel.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="project2.jpg" alt="Cybersecurity Tool">
+                    <p>Project 2: A secure file-sharing tool with encryption and access controls.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="project3.jpg" alt="Portfolio with Animations">
+                    <p>Project 3: A portfolio website showcasing interactive and responsive animations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="toolkit" class="full-page-section">
+        <h2>Toolkit</h2>
+        <p>My toolkit includes HTML, CSS, JavaScript, PHP, MySQL, Python, and cybersecurity tools like Kali Linux.</p>
+    </section>
+
+    <section id="about" class="full-page-section">
+        <h2>About Me</h2>
+        <p>I am a web designer and software security analyst with a focus on creating secure, user-friendly experiences for clients.</p>
+    </section>
+
+    <section id="contact" class="full-page-section">
+        <h2>Contact Me</h2>
+        <p>Email: your-email@example.com</p>
+        <p>Phone: +123456789</p>
+    </section>
+
+    <!-- Add Scramble Effect JavaScript -->
+    <script>
+        const scrambleText = (element, text, speed = 50) => {
+            const originalText = text.split("");
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let scrambledText = text.split("").map(() => letters[Math.floor(Math.random() * letters.length)]);
+            
+            let counter = 0;
+            
+            const interval = setInterval(() => {
+                if (counter < originalText.length) {
+                    scrambledText[counter] = originalText[counter];
+                    element.innerHTML = scrambledText.join("");
+                    counter++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, speed);
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const element = document.getElementById("scrambleText");
+            scrambleText(element, element.innerText, 100); // Adjust the speed as needed
+        });
+    </script>
+</body>
+</html>
