@@ -41,7 +41,7 @@
             border: 3px solid #8CFCB2; /* Pale Green border */
             transform-style: preserve-3d; /* Enable 3D transforms */
             opacity: 0; /* Start as hidden */
-            animation: fadeIn 1s ease-out, flipIn 0.6s ease-out forwards; /* Apply animations */
+            animation: fadeIn 1s ease-out forwards; /* Apply animations */
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
@@ -92,7 +92,7 @@
             background-color: #8CFCB2; /* Pale Green */
             border-color: #297799;
             transform: rotate(40deg);
-            animation-delay: 0s; /* No delay for the first card */
+            animation-delay: 0.2s; /* No delay for the first card */
         }
 
         .card-2 {
@@ -102,7 +102,7 @@
             background-color: #F5F5F5; /* Light Gray */
             border-color: #297799;
             transform: rotate(10deg);
-            animation-delay: 0.2s; /* Slight delay for the second card */
+            animation-delay: 0.4s; /* Slight delay for the second card */
         }
 
         .card-3 {
@@ -112,7 +112,7 @@
             background-color: #8CFCB2; /* Pale Green */
             border-color: #297799;
             transform: rotate(-30deg);
-            animation-delay: 0.4s; /* Slight delay for the third card */
+            animation-delay: 0.6s; /* Slight delay for the third card */
         }
 
         .card-4 {
@@ -122,27 +122,28 @@
             background-color: #F5F5F5; /* Light Gray */
             border-color: #297799;
             transform: rotate(-50deg);
-            animation-delay: 0.6s; /* Slight delay for the fourth card */
+            animation-delay: 0.8s; /* Slight delay for the fourth card */
         }
+
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <div class="nav-item card-1">
+        <div class="nav-item card-1" data-target="home">
             <div class="label">Home</div>
             <a href="#">1</a>
         </div>
-        <div class="nav-item card-2">
-            <div class="label">About</div>
+        <div class="nav-item card-2" data-target="about">
+            <div class="label">Projects </div>
             <a href="#">2</a>
         </div>
-        <div class="nav-item card-3">
-            <div class="label">Services</div>
+        <div class="nav-item card-3" data-target="services">
+            <div class="label">Toolkit</div>
             <a href="#">3</a>
         </div>
-        <div class="nav-item card-4">
-            <div class="label">Contact</div>
+        <div class="nav-item card-4" data-target="contact">
+            <div class="label">Contact me</div>
             <a href="#">4</a>
         </div>
     </div>
