@@ -8,27 +8,27 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #424242; /* Dark Gray background */
+            background-color: #424242;
         }
 
         .navbar {
             position: relative;
             width: 150px;
-            height: 67vh; /* Adjust height for a more reasonable navbar height */
-            margin: 0; /* Ensure no extra margins */
-            padding: 0; /* Ensure no padding */
-            left: 60px; /* Move the navbar slightly to the right */
+            height: 67vh;
+            margin: 0;
+            padding: 0;
+            left: 60px;
         }
 
         .nav-item {
             position: absolute;
             width: 260px;
             height: 360px;
-            background-color: #F5F5F5; /* Light Gray card color */
+            background-color: #F5F5F5;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -37,15 +37,14 @@
             cursor: pointer;
             font-size: 24px;
             font-weight: bold;
-            color: #297799; /* Teal Blue text for contrast */
-            border: 3px solid #8CFCB2; /* Pale Green border */
-            transform-style: preserve-3d; /* Enable 3D transforms */
-            opacity: 0; /* Start as hidden */
-            animation: fadeIn 1s ease-out forwards; /* Apply animations */
+            color: #297799;
+            border: 3px solid #8CFCB2;
+            transform-style: preserve-3d;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
-        /* Keyframes for the fade-in effect */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -55,76 +54,70 @@
             }
         }
 
-        /* Remove the background from the label */
         .nav-item .label {
             position: absolute;
             top: 2px;
             left: 2px;
             font-size: 18px;
-            color: #297799; /* Teal Blue text for readability */
+            color: #297799;
             padding: 5px;
-            transition: transform 0.5s ease, color 0.3s ease; /* Added longer transition */
+            transition: transform 0.5s ease, color 0.3s ease;
         }
 
-        /* Hover effect for the card */
         .nav-item:hover {
             background-color: #297799;
         }
 
-        /* Enhanced hover effect for the label */
         .nav-item:hover .label {
-            transform: translate(0%, -19%) scale(1.2); /* Translate and scale the label */
-            color: #F5F5F5; /* Light Gray text on hover */
+            transform: translate(0%, -19%) scale(1.2);
+            color: #F5F5F5;
         }
 
-        /* Style for the anchor tag inside the cards */
         .nav-item a {
             text-decoration: none;
             color: inherit;
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        /* Positioning and color adjustments for alternating cards */
         .card-1 {
             z-index: 5;
             bottom: -50px;
             left: 20px;
-            background-color: #8CFCB2; /* Pale Green */
+            background-color: #8CFCB2;
             border-color: #297799;
             transform: rotate(40deg);
-            animation-delay: 0.2s; /* No delay for the first card */
+            animation-delay: 0.2s;
         }
 
         .card-2 {
             z-index: 4;
             bottom: 40px;
             left: -30px;
-            background-color: #F5F5F5; /* Light Gray */
+            background-color: #F5F5F5;
             border-color: #297799;
             transform: rotate(10deg);
-            animation-delay: 0.4s; /* Slight delay for the second card */
+            animation-delay: 0.4s;
         }
 
         .card-3 {
             z-index: 3;
             bottom: 97px;
             left: -160px;
-            background-color: #8CFCB2; /* Pale Green */
+            background-color: #8CFCB2;
             border-color: #297799;
             transform: rotate(-30deg);
-            animation-delay: 0.6s; /* Slight delay for the third card */
+            animation-delay: 0.6s;
         }
 
         .card-4 {
             z-index: 2;
             bottom: 100px;
             left: -240px;
-            background-color: #F5F5F5; /* Light Gray */
+            background-color: #F5F5F5;
             border-color: #297799;
             transform: rotate(-50deg);
-            animation-delay: 0.8s; /* Slight delay for the fourth card */
+            animation-delay: 0.8s;
         }
-
     </style>
 </head>
 <body>
@@ -132,21 +125,35 @@
     <div class="navbar">
         <div class="nav-item card-1" data-target="home">
             <div class="label">Home</div>
-            <a href="#">1</a>
+            <a href="home.html#home">1</a>
         </div>
-        <div class="nav-item card-2" data-target="about">
-            <div class="label">Projects </div>
-            <a href="#">2</a>
+        <div class="nav-item card-2" data-target="projects">
+            <div class="label">Projects</div>
+            <a href="home.html#projects">2</a>
         </div>
-        <div class="nav-item card-3" data-target="services">
+        <div class="nav-item card-3" data-target="toolkit">
             <div class="label">Toolkit</div>
-            <a href="#">3</a>
+            <a href="home.html#toolkit">3</a>
         </div>
         <div class="nav-item card-4" data-target="contact">
-            <div class="label">Contact me</div>
-            <a href="#">4</a>
+            <div class="label">Contact</div>
+            <a href="home.html#contact">4</a>
         </div>
     </div>
 
+    <script>
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Hide all nav items
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.style.opacity = 0;
+                });
+
+                // Show the relevant section in home.html
+                const targetId = this.getAttribute('data-target');
+                window.location.href = `home.html#${targetId}`;
+            });
+        });
+    </script>
 </body>
 </html>
