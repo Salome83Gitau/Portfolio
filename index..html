@@ -16,6 +16,15 @@
             overflow: hidden; /* Prevent scrollbars during animations */
         }
 
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
         .navbar {
             position: relative;
             width: 150px;
@@ -42,8 +51,12 @@
             border: 3px solid #8CFCB2; /* Pale Green border */
             transform-style: preserve-3d; /* Enable 3D transforms */
             opacity: 1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.4s ease;
             text-decoration: none; /* Ensure no underline */
+        }
+
+        .fade-out {
+            animation: fadeOut 0.4s forwards;
         }
 
         /* Remove the background from the label */
@@ -116,7 +129,7 @@
             height: 100%;
             background-color: #fff;
             opacity: 0;
-            transition: right 0.8s ease, opacity 0.8s ease;
+            transition: right 0.5s ease, opacity 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -172,19 +185,19 @@
                 let delay = 0;
                 cards.forEach(card => {
                     setTimeout(() => {
-                        card.style.opacity = 0;
+                        card.classList.add('fade-out');
                     }, delay);
-                    delay += 200; // Stagger the fade out
+                    delay += 100; // Faster fade out
                 });
 
-                // After the last card has faded out, show the target section
+                // Show the target section with a smoother transition
                 setTimeout(() => {
                     cards.forEach(card => card.style.display = 'none'); // Hide the cards
                     targetSection.style.display = 'flex'; // Show the selected section
                     setTimeout(() => {
                         targetSection.classList.add('active'); // Slide in the section from the right
-                    }, 50); // Short delay to ensure transition applies
-                }, cards.length * 200 + 300); // Delay to wait for all cards to fade out
+                    }, 30); // Shorter delay for the section transition
+                }, cards.length * 100 + 300); // Adjusted timing for faster effect
             });
         });
     </script>
