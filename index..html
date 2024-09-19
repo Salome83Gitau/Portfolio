@@ -56,10 +56,9 @@
         }
 
         .fade-out {
-            animation: fadeOut 0.4s forwards;
+            animation: fadeOut 0.5s forwards;
         }
 
-        /* Remove the background from the label */
         .nav-item .label {
             position: absolute;
             top: 2px;
@@ -70,19 +69,16 @@
             transition: transform 0.5s ease, color 0.3s ease; /* Added longer transition */
         }
 
-        /* Hover effect for the card */
         .nav-item:hover {
             background-color: #297799;
             color: #F5F5F5; /* Ensure the text color changes too */
         }
 
-        /* Enhanced hover effect for the label */
         .nav-item:hover .label {
             transform: translate(0%, -19%) scale(1.2); /* Translate and scale the label */
             color: #F5F5F5; /* Light Gray text on hover */
         }
 
-        /* Positioning and color adjustments for alternating cards */
         .card-1 {
             z-index: 5;
             bottom: -50px;
@@ -119,17 +115,17 @@
             transform: rotate(-50deg);
         }
 
-        /* Section that fades in from the right */
+        /* Section that grows from the right */
         .content-section {
             display: none;
             position: absolute;
-            right: -100%; /* Initially off-screen */
+            right: 0; /* Start from the right */
             top: 0;
-            width: 100%;
+            width: 0%; /* Initially 0% width */
             height: 100%;
             background-color: #fff;
-            opacity: 0;
-            transition: right 0.5s ease, opacity 0.5s ease;
+            opacity: 0; /* Hidden initially */
+            transition: width 0.8s ease-out, opacity 0.8s ease-out; /* Smooth grow effect */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -139,7 +135,7 @@
         }
 
         .content-section.active {
-            right: 0;
+            width: 100%; /* Grow to full width */
             opacity: 1;
         }
     </style>
@@ -190,14 +186,14 @@
                     delay += 100; // Faster fade out
                 });
 
-                // Show the target section with a smoother transition
+                // Show the target section with a grow effect
                 setTimeout(() => {
                     cards.forEach(card => card.style.display = 'none'); // Hide the cards
-                    targetSection.style.display = 'flex'; // Show the selected section
+                    targetSection.style.display = 'flex'; // Make the section visible (for flex layout)
                     setTimeout(() => {
-                        targetSection.classList.add('active'); // Slide in the section from the right
+                        targetSection.classList.add('active'); // Trigger the grow effect
                     }, 30); // Shorter delay for the section transition
-                }, cards.length * 100 + 300); // Adjusted timing for faster effect
+                }, cards.length * 100 + 500); // Longer delay for smoother transition
             });
         });
     </script>
