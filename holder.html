@@ -126,23 +126,59 @@
             border-color: #297799;
             transform: rotate(-50deg);
         }
+
+        .full-page-section {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0;
+            transition: width 0.8s ease-out, opacity 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #297799;
+        }
+
+        .full-page-section.active {
+            width: 100%;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="home.html#home" class="nav-item card-1">
+        <a href="#home" class="nav-item card-1">
             <div class="label">Home</div>
         </a>
-        <a href="home.html#projects" class="nav-item card-2">
+        <a href="#projects" class="nav-item card-2">
             <div class="label">Projects</div>
         </a>
-        <a href="home.html#toolkit" class="nav-item card-3">
+        <a href="#toolkit" class="nav-item card-3">
             <div class="label">Toolkit</div>
         </a>
-        <a href="home.html#contact" class="nav-item card-4">
+        <a href="#contact" class="nav-item card-4">
             <div class="label">Contact</div>
         </a>
+    </div>
+
+    <div id="home" class="full-page-section">
+        <div>Welcome to the Home Section!</div>
+    </div>
+    <div id="projects" class="full-page-section">
+        <div>Here are some Projects!</div>
+    </div>
+    <div id="toolkit" class="full-page-section">
+        <div>Check out the Toolkit!</div>
+    </div>
+    <div id="contact" class="full-page-section">
+        <div>Contact Us!</div>
     </div>
 
     <script>
@@ -156,6 +192,32 @@
                     card.classList.add('fade-in');
                 }, delay);
                 delay += 300;
+            });
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href'));
+
+                // Fade out all the cards
+                const cards = document.querySelectorAll('.nav-item');
+                let delay = 0;
+                cards.forEach(card => {
+                    setTimeout(() => {
+                        card.classList.add('fade-out');
+                    }, delay);
+                    delay += 100;
+                });
+
+                // Show the target section with a grow effect
+                setTimeout(() => {
+                    cards.forEach(card => card.style.display = 'none');
+                    targetSection.style.display = 'flex';
+                    setTimeout(() => {
+                        targetSection.classList.add('active');
+                    }, 30);
+                }, cards.length * 100 + 500);
             });
         });
     </script>
