@@ -8,12 +8,12 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #424242; /* Dark Gray background */
-            overflow: hidden; /* Prevent scrollbars during animations */
+            background-color: #424242;
+            overflow: hidden;
         }
 
         @keyframes fadeIn {
@@ -37,17 +37,15 @@
         .navbar {
             position: relative;
             width: 150px;
-            height: 67vh; /* Adjust height for a more reasonable navbar height */
-            margin: 0; /* Ensure no extra margins */
-            padding: 0; /* Ensure no padding */
-            left: 60px; /* Move the navbar slightly to the right */
+            height: 67vh;
+            left: 60px;
         }
 
         .nav-item {
             position: absolute;
             width: 260px;
             height: 360px;
-            background-color: #F5F5F5; /* Light Gray card color */
+            background-color: #F5F5F5;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -56,16 +54,16 @@
             cursor: pointer;
             font-size: 24px;
             font-weight: bold;
-            color: #297799; /* Teal Blue text for contrast */
-            border: 3px solid #8CFCB2; /* Pale Green border */
-            transform-style: preserve-3d; /* Enable 3D transforms */
-            opacity: 0; /* Initially hidden */
+            color: #297799;
+            border: 3px solid #8CFCB2;
+            transform-style: preserve-3d;
+            opacity: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.4s ease;
-            text-decoration: none; /* Ensure no underline */
+            text-decoration: none;
         }
 
         .fade-in {
-            animation: fadeIn 1s forwards; /* Play the fade-in animation */
+            animation: fadeIn 1s forwards;
         }
 
         .fade-out {
@@ -77,26 +75,26 @@
             top: 2px;
             left: 2px;
             font-size: 18px;
-            color: #297799; /* Teal Blue text for readability */
+            color: #297799;
             padding: 5px;
-            transition: transform 0.5s ease, color 0.3s ease; /* Added longer transition */
+            transition: transform 0.5s ease, color 0.3s ease;
         }
 
         .nav-item:hover {
             background-color: #297799;
-            color: #F5F5F5; /* Ensure the text color changes too */
+            color: #F5F5F5;
         }
 
         .nav-item:hover .label {
-            transform: translate(0%, -19%) scale(1.2); /* Translate and scale the label */
-            color: #F5F5F5; /* Light Gray text on hover */
+            transform: translate(0%, -19%) scale(1.2);
+            color: #F5F5F5;
         }
 
         .card-1 {
             z-index: 5;
             bottom: -50px;
             left: 20px;
-            background-color: #8CFCB2; /* Pale Green */
+            background-color: #8CFCB2;
             border-color: #297799;
             transform: rotate(40deg);
         }
@@ -105,7 +103,7 @@
             z-index: 4;
             bottom: 40px;
             left: -30px;
-            background-color: #F5F5F5; /* Light Gray */
+            background-color: #F5F5F5;
             border-color: #297799;
             transform: rotate(10deg);
         }
@@ -114,7 +112,7 @@
             z-index: 3;
             bottom: 97px;
             left: -160px;
-            background-color: #8CFCB2; /* Pale Green */
+            background-color: #8CFCB2;
             border-color: #297799;
             transform: rotate(-30deg);
         }
@@ -123,22 +121,21 @@
             z-index: 2;
             bottom: 100px;
             left: -240px;
-            background-color: #F5F5F5; /* Light Gray */
+            background-color: #F5F5F5;
             border-color: #297799;
             transform: rotate(-50deg);
         }
 
-        /* Section that grows from the right */
-        .content-section {
+        .full-page-section {
             display: none;
             position: absolute;
-            right: 0; /* Start from the right */
+            right: 0;
             top: 0;
-            width: 0%; /* Initially 0% width */
+            width: 0%;
             height: 100%;
             background-color: #fff;
-            opacity: 0; /* Hidden initially */
-            transition: width 0.8s ease-out, opacity 0.8s ease-out; /* Smooth grow effect */
+            opacity: 0;
+            transition: width 0.8s ease-out, opacity 0.8s ease-out;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,8 +144,8 @@
             color: #297799;
         }
 
-        .content-section.active {
-            width: 100%; /* Grow to full width */
+        .full-page-section.active {
+            width: 100%;
             opacity: 1;
         }
     </style>
@@ -170,18 +167,7 @@
         </a>
     </div>
 
-    <div class="content-section" id="home-section">
-        Welcome to Home
-    </div>
-    <div class="content-section" id="projects-section">
-        Projects Section
-    </div>
-    <div class="content-section" id="toolkit-section">
-        Toolkit Section
-    </div>
-    <div class="content-section" id="contact-section">
-        Contact Section
-    </div>
+   
 
     <script>
         // Function to fade in the cards one by one
@@ -193,14 +179,14 @@
                 setTimeout(() => {
                     card.classList.add('fade-in');
                 }, delay);
-                delay += 300; // Delay between each card's fade-in
+                delay += 300;
             });
         });
 
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetSection = document.querySelector(this.getAttribute('href') + '-section');
+                const targetSection = document.querySelector(this.getAttribute('href'));
 
                 // Fade out all the cards
                 const cards = document.querySelectorAll('.nav-item');
@@ -209,17 +195,17 @@
                     setTimeout(() => {
                         card.classList.add('fade-out');
                     }, delay);
-                    delay += 100; // Faster fade out
+                    delay += 100;
                 });
 
                 // Show the target section with a grow effect
                 setTimeout(() => {
-                    cards.forEach(card => card.style.display = 'none'); // Hide the cards
-                    targetSection.style.display = 'flex'; // Make the section visible (for flex layout)
+                    cards.forEach(card => card.style.display = 'none');
+                    targetSection.style.display = 'flex';
                     setTimeout(() => {
-                        targetSection.classList.add('active'); // Trigger the grow effect
-                    }, 30); // Shorter delay for the section transition
-                }, cards.length * 100 + 500); // Longer delay for smoother transition
+                        targetSection.classList.add('active');
+                    }, 30);
+                }, cards.length * 100 + 500);
             });
         });
     </script>
