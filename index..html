@@ -126,6 +126,29 @@
             border-color: #297799;
             transform: rotate(-50deg);
         }
+
+        .full-page-section {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0;
+            transition: width 0.8s ease-out, opacity 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #297799;
+        }
+
+        .full-page-section.active {
+            width: 100%;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -159,7 +182,33 @@
             });
         });
 
-        
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href'));
+
+                // Fade out all the cards
+                const cards = document.querySelectorAll('.nav-item');
+                let delay = 0;
+                cards.forEach(card => {
+                    setTimeout(() => {
+                        card.classList.add('fade-out');
+                    }, delay);
+                    delay += 100;
+                });
+
+                // After the last card fades out, display the target section
+                setTimeout(() => {
+                    cards.forEach(card => {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in', 'fade-out'); // Reset classes for next time
+                    });
+
+                    targetSection.style.display = 'flex';
+                    targetSection.classList.add('active');
+                }, cards.length * 100 + 500); // Adjust timing as needed
+            });
+        });
     </script>
 
 </body>
