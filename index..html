@@ -16,6 +16,15 @@
             overflow: hidden; /* Prevent scrollbars during animations */
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @keyframes fadeOut {
             from {
                 opacity: 1;
@@ -50,9 +59,13 @@
             color: #297799; /* Teal Blue text for contrast */
             border: 3px solid #8CFCB2; /* Pale Green border */
             transform-style: preserve-3d; /* Enable 3D transforms */
-            opacity: 1;
+            opacity: 0; /* Initially hidden */
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.4s ease;
             text-decoration: none; /* Ensure no underline */
+        }
+
+        .fade-in {
+            animation: fadeIn 1s forwards; /* Play the fade-in animation */
         }
 
         .fade-out {
@@ -171,6 +184,19 @@
     </div>
 
     <script>
+        // Function to fade in the cards one by one
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.nav-item');
+            let delay = 0;
+
+            cards.forEach(card => {
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, delay);
+                delay += 300; // Delay between each card's fade-in
+            });
+        });
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
