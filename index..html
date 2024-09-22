@@ -154,19 +154,24 @@
 <body>
 
     <div class="navbar">
-        <a href="home.html#home" class="nav-item card-1">
+        <div class="nav-item card-1" data-target="home">
             <div class="label">Home</div>
-        </a>
-        <a href="home.html#projects" class="nav-item card-2">
+        </div>
+        <div class="nav-item card-2" data-target="projects">
             <div class="label">Projects</div>
-        </a>
-        <a href="home.html#toolkit" class="nav-item card-3">
+        </div>
+        <div class="nav-item card-3" data-target="toolkit">
             <div class="label">Toolkit</div>
-        </a>
-        <a href="home.html#contact" class="nav-item card-4">
+        </div>
+        <div class="nav-item card-4" data-target="contact">
             <div class="label">Contact</div>
-        </a>
+        </div>
     </div>
+
+    <div id="home" class="full-page-section">Home Section</div>
+    <div id="projects" class="full-page-section">Projects Section</div>
+    <div id="toolkit" class="full-page-section">Toolkit Section</div>
+    <div id="contact" class="full-page-section">Contact Section</div>
 
     <script>
         // Function to fade in the cards one by one
@@ -183,9 +188,9 @@
         });
 
         document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetSection = document.querySelector(this.getAttribute('href'));
+            item.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
 
                 // Fade out all the cards
                 const cards = document.querySelectorAll('.nav-item');
