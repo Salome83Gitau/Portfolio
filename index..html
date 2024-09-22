@@ -8,13 +8,12 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
             height: 100vh;
             margin: 0;
-            background-color: #424242;
-            overflow: hidden;
-            position: relative;
+            background-color: #424242; /* Dark Gray background */
+            overflow: hidden; /* Prevent scrollbars during animations */
         }
 
         @keyframes fadeIn {
@@ -38,15 +37,17 @@
         .navbar {
             position: relative;
             width: 150px;
-            height: 67vh;
-            left: 60px;
+            height: 67vh; /* Adjust height for a more reasonable navbar height */
+            margin: 0; /* Ensure no extra margins */
+            padding: 0; /* Ensure no padding */
+            left: 60px; /* Move the navbar slightly to the right */
         }
 
         .nav-item {
             position: absolute;
             width: 260px;
             height: 360px;
-            background-color: #F5F5F5;
+            background-color: #F5F5F5; /* Light Gray card color */
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -55,16 +56,16 @@
             cursor: pointer;
             font-size: 24px;
             font-weight: bold;
-            color: #297799;
-            border: 3px solid #8CFCB2;
-            transform-style: preserve-3d;
-            opacity: 0;
+            color: #297799; /* Teal Blue text for contrast */
+            border: 3px solid #8CFCB2; /* Pale Green border */
+            transform-style: preserve-3d; /* Enable 3D transforms */
+            opacity: 0; /* Initially hidden */
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.4s ease;
-            text-decoration: none;
+            text-decoration: none; /* Ensure no underline */
         }
 
         .fade-in {
-            animation: fadeIn 1s forwards;
+            animation: fadeIn 1s forwards; /* Play the fade-in animation */
         }
 
         .fade-out {
@@ -76,26 +77,26 @@
             top: 2px;
             left: 2px;
             font-size: 18px;
-            color: #297799;
+            color: #297799; /* Teal Blue text for readability */
             padding: 5px;
-            transition: transform 0.5s ease, color 0.3s ease;
+            transition: transform 0.5s ease, color 0.3s ease; /* Added longer transition */
         }
 
         .nav-item:hover {
             background-color: #297799;
-            color: #F5F5F5;
+            color: #F5F5F5; /* Ensure the text color changes too */
         }
 
         .nav-item:hover .label {
-            transform: translate(0%, -19%) scale(1.2);
-            color: #F5F5F5;
+            transform: translate(0%, -19%) scale(1.2); /* Translate and scale the label */
+            color: #F5F5F5; /* Light Gray text on hover */
         }
 
         .card-1 {
             z-index: 5;
             bottom: -50px;
             left: 20px;
-            background-color: #8CFCB2;
+            background-color: #8CFCB2; /* Pale Green */
             border-color: #297799;
             transform: rotate(40deg);
         }
@@ -104,7 +105,7 @@
             z-index: 4;
             bottom: 40px;
             left: -30px;
-            background-color: #F5F5F5;
+            background-color: #F5F5F5; /* Light Gray */
             border-color: #297799;
             transform: rotate(10deg);
         }
@@ -113,7 +114,7 @@
             z-index: 3;
             bottom: 97px;
             left: -160px;
-            background-color: #8CFCB2;
+            background-color: #8CFCB2; /* Pale Green */
             border-color: #297799;
             transform: rotate(-30deg);
         }
@@ -122,21 +123,22 @@
             z-index: 2;
             bottom: 100px;
             left: -240px;
-            background-color: #F5F5F5;
+            background-color: #F5F5F5; /* Light Gray */
             border-color: #297799;
             transform: rotate(-50deg);
         }
 
-        .full-page-section {
+        /* Section that grows from the right */
+        .content-section {
             display: none;
             position: absolute;
-            right: 0;
+            right: 0; /* Start from the right */
             top: 0;
-            width: 0%;
+            width: 0%; /* Initially 0% width */
             height: 100%;
             background-color: #fff;
-            opacity: 0;
-            transition: width 0.8s ease-out, opacity 0.8s ease-out;
+            opacity: 0; /* Hidden initially */
+            transition: width 0.8s ease-out, opacity 0.8s ease-out; /* Smooth grow effect */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -145,8 +147,8 @@
             color: #297799;
         }
 
-        .full-page-section.active {
-            width: 100%;
+        .content-section.active {
+            width: 100%; /* Grow to full width */
             opacity: 1;
         }
     </style>
@@ -154,24 +156,19 @@
 <body>
 
     <div class="navbar">
-        <div class="nav-item card-1" data-target="home">
+        <a href="home.html#home" class="nav-item card-1">
             <div class="label">Home</div>
-        </div>
-        <div class="nav-item card-2" data-target="projects">
+        </a>
+        <a href="home.html#projects" class="nav-item card-2">
             <div class="label">Projects</div>
-        </div>
-        <div class="nav-item card-3" data-target="toolkit">
+        </a>
+        <a href="home.html#toolkit" class="nav-item card-3">
             <div class="label">Toolkit</div>
-        </div>
-        <div class="nav-item card-4" data-target="contact">
+        </a>
+        <a href="home.html#contact" class="nav-item card-4">
             <div class="label">Contact</div>
-        </div>
+        </a>
     </div>
-
-    <div id="home" class="full-page-section">Home Section</div>
-    <div id="projects" class="full-page-section">Projects Section</div>
-    <div id="toolkit" class="full-page-section">Toolkit Section</div>
-    <div id="contact" class="full-page-section">Contact Section</div>
 
     <script>
         // Function to fade in the cards one by one
@@ -183,14 +180,14 @@
                 setTimeout(() => {
                     card.classList.add('fade-in');
                 }, delay);
-                delay += 300;
+                delay += 300; // Delay between each card's fade-in
             });
         });
 
         document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const targetSection = document.getElementById(targetId);
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href') + '-section');
 
                 // Fade out all the cards
                 const cards = document.querySelectorAll('.nav-item');
@@ -199,19 +196,17 @@
                     setTimeout(() => {
                         card.classList.add('fade-out');
                     }, delay);
-                    delay += 100;
+                    delay += 100; // Faster fade out
                 });
 
-                // After the last card fades out, display the target section
+                // Show the target section with a grow effect
                 setTimeout(() => {
-                    cards.forEach(card => {
-                        card.style.display = 'none';
-                        card.classList.remove('fade-in', 'fade-out'); // Reset classes for next time
-                    });
-
-                    targetSection.style.display = 'flex';
-                    targetSection.classList.add('active');
-                }, cards.length * 100 + 500); // Adjust timing as needed
+                    cards.forEach(card => card.style.display = 'none'); // Hide the cards
+                    targetSection.style.display = 'flex'; // Make the section visible (for flex layout)
+                    setTimeout(() => {
+                        targetSection.classList.add('active'); // Trigger the grow effect
+                    }, 30); // Shorter delay for the section transition
+                }, cards.length * 100 + 500); // Longer delay for smoother transition
             });
         });
     </script>
